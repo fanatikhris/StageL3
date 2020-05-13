@@ -1,0 +1,18 @@
+<h1 class="text-center">Liste des infos de {{id}}</h1>
+<div class="container">
+  <div class="btn-group btn-group-toggle">
+    <label class="btn btn-secondary">
+      <input type="radio" name="options" id="option1" [ngClass]="{active: vue==='modifier'}" (change)="setView('modifier')"> Modifier
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name='options' id="option2" [ngClass]="{active: vue==='unavailability'}" (change)="setView('unavailability')"> Indisponibilités
+    </label>
+  </div>
+  <div *ngIf="vue === 'modifier'">
+    <app-roomUpdate [id]='id' class="text-center"></app-roomUpdate>
+  </div>
+  <div *ngIf="vue === 'unavailability'">
+    <app-timeUnavailabilityView [id]='id' class="text-center"></app-timeUnavailabilityView>
+  </div>
+
+</div>

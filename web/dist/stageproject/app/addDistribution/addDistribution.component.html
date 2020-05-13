@@ -1,0 +1,79 @@
+<div class="form-row justify-content-md-center">
+  <fieldset class="border p-2">
+    <legend class="w-auto">Informations sur la distribution</legend>    
+      <div>
+    
+
+        <div class="form-row">
+          <label>Type</label>
+          <select [(ngModel)]='id' class="selectpicker" (change)="resetparam()" [disabled]="disabledConstraint()" id="type">
+            <option *ngFor="let type of types" [ngValue]="type">{{type.idfr}}</option>
+          </select>
+        </div>
+        <div *ngIf="idIsValid()">
+          <div class='form-row'>{{id.desc}}</div>
+          <div *ngFor="let parametre of id.param; let i = index" class="form-row">
+            <label>{{parametre}}:</label>
+            <input type="text" class="form-control mb-2 mr-sm-2" [disabled]="disabledConstraint()" placeholder="{{parametre}}" [(ngModel)]="param[i]">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="checkbox-inline"><input [(ngModel)]="required" [disabled]="disabledConstraint()" ng-true-value="true" ng-false-value="false" id="rec" type="checkbox"> Obligatoire ? </label>
+        </div>
+        <div *ngIf="!required" class="form-row">
+          <label for="pref" class="mr-sm-2">Préférence :</label>
+          <input type="number" [disabled]="disabledConstraint()" min="0" max="10" class="form-control mb-2 mr-sm-2" placeholder="Préférence" id="pref" [(ngModel)]="pref">
+        </div>
+
+       
+  
+        
+      </div>
+  </fieldset>
+</div>
+
+<div class="form-row justify-content-md-center">
+  <fieldset class="border p-2">
+    <legend class="w-auto">Informations sur les cours</legend>
+    <div class="form-row justify-content-md-around">
+      <label>UE:</label>
+      <select [(ngModel)]='idUe' (change)='setCours()' class="selectpicker">
+        <option>Choix</option>
+        <option *ngFor="let ue of ues" [ngValue]="ue">{{ue.attr.id}}</option>
+      </select>
+    </div>
+    <div class="form-row justify-content-md-around">
+      <label>Cours:</label>
+      <select [(ngModel)]='idCours' class="selectpicker">
+        <option>Choix</option>
+        <option *ngFor="let cour of cours" [ngValue]="cour">{{cour.attr.id}}</option>
+      </select>
+    </div>
+    <div class="form-row justify-content-md-around">
+      <button type="submit" [disabled]="!isValid1()" (click)="addToConstraint()" class="btn btn-dark">Ajouter à la contrainte</button>
+    </div>
+
+    <div class="form-row justify-content-md-around">
+      <table *ngIf="distri.class.length !== 0" class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Id</th>
+          </tr>
+        </thead>
+        <tbody class="example-list" cdkDropList (cdkDropListDropped)="drop($event)">
+          <tr  class="exemple-box" *ngFor="let classe of distri.class; let i = index" cdkDrag>
+            <th>{{i+1}}</th>
+            <td>{{classe.attr.id}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </fieldset>
+</div>
+
+<div class="form-row justify-content-md-around">
+  <button type="submit" [disabled]="distri.class.length === 0" (click)="setConstraint()" class="btn btn-dark">Ajouter la contrainte</button>
+</div>

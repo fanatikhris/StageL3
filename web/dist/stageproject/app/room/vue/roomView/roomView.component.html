@@ -1,0 +1,12 @@
+<h1 class="text-center">Liste des salles</h1>
+<div class="container">
+  <div class="form-row justify-content-md-around" style="padding: 5px;">
+    <input type="file" id="fileroom" (change)="handle($event.target.files)">
+    <button (click)='initRooms()'>TXT</button>
+    <input [(ngModel)]="roomFiltre" class="form-control" id="roomInput" (keyup)="roomFilter()" placeholder="Rechercher..." type="text">
+    <button routerLink="createSalle" class="btn btn-dark">Creer une salle</button>
+  </div>
+  <div class="list-group">
+    <a [routerLink]="['/room', room.attr.id]" *ngFor="let room of roomList" class="list-group-item list-group-item-action" style="cursor: pointer;">{{room.attr.id}}</a>
+  </div>
+</div>

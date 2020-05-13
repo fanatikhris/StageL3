@@ -1,0 +1,15 @@
+<div>
+  <h3 class="form-row justify-content-md-center">UE: {{ueId}}</h3>
+  <div class="form-row justify-content-md-center">
+    <label> Configuration des cours : </label>
+    <div class="form-check form-check-inline" *ngFor="let type of types; let i = index">
+      
+      <input class="form-check-input" type="checkbox" [(ngModel)]="chosenTypes[i]" ng-true-value="true" ng-false-value="false" ng-checked="chosenTypes[i] == true">
+      <label class="form-check-label">{{type}}</label>
+    </div>
+  </div>
+  <div class="form-row justify-content-md-center">
+    <button (click)='onSubmit()' [disabled]='isValid()' type="submit" class="btn btn-dark">suivant</button>
+  </div>
+  
+</div>

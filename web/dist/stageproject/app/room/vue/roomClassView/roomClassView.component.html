@@ -1,0 +1,18 @@
+<div>
+  <div>
+    <button [routerLink]="['/ajoutSalle', idClass]" class="btn btn-dark">Ajouter une salle</button>
+  </div>
+  <div class="form-row justify-content-md-around" style="padding: 5px;">
+    <input [(ngModel)]="roomFiltre" class="form-control" id="roomInput" (keyup)="roomFilter()" placeholder="Rechercher..." type="text">
+  </div>
+  <div class="list-group">
+    <div *ngFor="let room of classRooms" class="btn-group" role="group">
+      <a [routerLink]="['/room', room.attr.id]" class="list-group-item list-group-item-action col-sm-10" style="cursor: pointer;">{{room.attr.id}}</a>
+      <button (click)='remove(room)' type="button" class="btn btn-danger border" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
+</div>
+

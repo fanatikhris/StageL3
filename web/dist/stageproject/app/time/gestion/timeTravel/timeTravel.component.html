@@ -1,0 +1,32 @@
+<div class="form-row justify-content-md-center">
+  <fieldset class="border p-2">
+    <legend class="w-auto">Informations sur les salles</legend>    
+      <div>
+    
+
+        <div class="form-row">
+          <label>Salles 1</label>
+          <select [(ngModel)]='id1' class="selectpicker">
+            <option *ngFor="let room of rooms" [ngValue]="room">{{room.attr.id}}</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label>Salles 2</label>
+          <select [(ngModel)]='id2' class="selectpicker">
+            <option *ngFor="let room of rooms" [ngValue]="room">{{room.attr.id}}</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label>Temps de trajet (minutes) : </label>
+          <input type="number" min='0' class="form-control mb-2 mr-sm-2" placeholder="temps de trajet" id="nb" [(ngModel)]="nb">
+        </div>
+  
+        
+      </div>
+      <div class="form-row">
+        <button type="submit" (click)="addTimeTravel()" class="btn btn-dark" [disabled] = "isValid()">Ajouter</button>
+      </div>
+  </fieldset>
+</div>

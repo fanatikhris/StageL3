@@ -1,0 +1,9 @@
+<h1 class="text-center">Liste des cours de {{idUe}}</h1>
+<div class="container">
+  <div class="form-row justify-content-md-around" style="padding: 5px;">
+    <input [(ngModel)]="classFiltre" class="form-control" id="classInput" (keyup)="classFilter()" placeholder="Rechercher..." type="text">
+  </div>
+  <div class="list-group">
+    <a [routerLink]="['/class', classe.attr.id]" *ngFor="let classe of classList" class="list-group-item list-group-item-action" style="cursor: pointer;">{{classe.attr.id}}</a>
+  </div>
+</div>

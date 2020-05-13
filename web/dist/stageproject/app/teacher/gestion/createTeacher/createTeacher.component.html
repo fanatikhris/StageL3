@@ -1,0 +1,13 @@
+<div class="form-row justify-content-md-center">
+  <fieldset class="border p-2">
+    <legend class="w-auto">Informations sur le professeur</legend>
+    <div class="form-row">
+      <label> id: </label>
+      <input type="text" class="form-control mb-2 mr-sm-2" placeholder="id du professeur" id="name" [(ngModel)]="id">
+    </div>
+    
+    <div class="form-row justify-content-md-around">
+      <button (click)='addTeacher()' class="btn btn-dark" [disabled]='id.length === 0'>Ajouter professeur</button>
+    </div>
+  </fieldset>
+</div>

@@ -1,0 +1,25 @@
+<h1 class="text-center">Liste des infos de {{idUe}}</h1>
+<div class="container">
+  
+  <ngb-tabset [destroyOnHide]='false'>
+    <ngb-tab title="Cours">
+      <ng-template ngbTabContent>
+        <app-classUeView [idUe]='idUe' class="text-center"></app-classUeView>
+      </ng-template>
+
+    </ngb-tab>
+
+    <ngb-tab title="Etudiants">
+      <ng-template ngbTabContent>
+        <app-studentUeView [idUe]='idUe' class="text-center"></app-studentUeView>
+      </ng-template>
+
+    </ngb-tab>
+
+  </ngb-tabset>
+  
+
+  
+
+
+</div>

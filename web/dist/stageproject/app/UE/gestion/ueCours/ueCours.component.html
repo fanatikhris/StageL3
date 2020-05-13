@@ -1,0 +1,74 @@
+<form [formGroup]="form">
+  <div>
+    <h3 class="form-row justify-content-md-center">UE: {{ueId}}</h3>
+    <div class="form-row justify-content-md-center">
+      <fieldset class="border p-2">
+        <legend class="w-auto">Informations générales</legend>
+        <div class="form-row">
+          <label>type: </label>
+          <div *ngFor="let type of types" class="form-check-inline">
+            <input class="form-check-input" (change)='setParents()' type="radio" formControlName="type" [value]="type">
+            <label class="form-check-label">{{type}}</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Nom du groupe" id="name" formControlName="groupe">
+        </div>
+        <div class="form-row">
+          <label>Professeur</label>
+          <select formControlName="teacher" class="selectpicker">
+            <option *ngFor="let teacher of teachers" [ngValue]="teacher">{{teacher}}</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input type="number" class="form-control mb-2 mr-sm-2" placeholder="Limite d'étudiant" id="nb" formControlName="nb">
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</form>
+<div class="form-row justify-content-md-center">
+  <fieldset class="border p-2">
+    <legend class="w-auto">Parent (facultatif)</legend>
+<div>
+  <select [(ngModel)]='parentval' class="selectpicker">
+    <option *ngFor="let parent of parents" [ngValue]="parent">{{parent}}</option>
+  </select>
+</div>
+</fieldset>
+</div>
+
+<div class="form-row justify-content-md-center">
+<fieldset class="border p-2">
+  <legend class="w-auto">Cours</legend>
+  <div class="form-row justify-content-md-around">
+<button (click)="addCours()" [disabled]="isValid()" type="submit" class="btn btn-dark">Ajouter cours</button>
+</div>
+
+
+
+
+  <table *ngIf="cours.length !== 0" class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Professeur</th>
+      <th>Parent</th>
+      <th>limite d'étudiants</th>
+    </tr>
+  </thead>
+  <tbody cdkDrop>
+    <tr *ngFor="let classe of cours; let i = index" cdkDrag>
+      <td>{{classe.attr.id}}</td>
+      <td>{{tCourses[i].teacher}}</td>
+      <td>{{classe.attr.parent}}</td>
+      <td>{{classe.attr.limit}}</td>
+    </tr>
+  </tbody>
+</table>
+</fieldset>
+</div>
+
+<div class="form-row justify-content-md-around" style="margin: 5px;">
+<button (click)="saveCours()" type="submit" class="btn btn-dark" [disabled] = "cours.length === 0">Sauvegarder UE</button>
+</div>
