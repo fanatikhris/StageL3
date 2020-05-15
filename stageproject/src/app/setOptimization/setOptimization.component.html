@@ -1,0 +1,25 @@
+<div class="form-row justify-content-md-center">
+  <fieldset class="border p-2">
+    <legend class="w-auto">Optimization</legend>
+    <div class="form-row">
+      <label>Time: </label>
+      <input type="number" min="0" class="form-control mb-2 mr-sm-2" placeholder="actuelle: {{opti.attr.time}}" id="time" [(ngModel)]="time">
+    </div>
+    <div class="form-row">
+      <label>Room:</label>
+      <input type="number" min='0' class="form-control mb-2 mr-sm-2" placeholder="actuelle: {{opti.attr.room}}" id="room" [(ngModel)]="room">
+    </div>
+    <div class="form-row">
+      <label>Distribution:</label>
+      <input type="number" min='0' class="form-control mb-2 mr-sm-2" placeholder="actuelle: {{opti.attr.distribution}}" id="distri" [(ngModel)]="distri">
+    </div>
+    <div class="form-row">
+      <label>Student:</label>
+      <input type="number" min='0' class="form-control mb-2 mr-sm-2" placeholder="actuelle: {{opti.attr.student}}" id="student" [(ngModel)]="student">
+    </div>
+    
+    <div class="form-row justify-content-md-around">
+      <button (click)='setOpti()' class="btn btn-dark" [disabled]='!isValid()'>Régler optimization</button>
+    </div>
+  </fieldset>
+</div>

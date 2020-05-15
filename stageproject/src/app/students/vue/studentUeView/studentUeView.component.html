@@ -1,0 +1,9 @@
+<h1 class="text-center">Liste des étudiants de {{idUe}}</h1>
+<div class="container">
+  <div class="form-row justify-content-md-around" style="padding: 5px;">
+    <input [(ngModel)]="studentFiltre" class="form-control" id="studentInput" (keyup)="studentFilter()" placeholder="Rechercher..." type="text">
+  </div>
+  <div class="list-group">
+    <a [routerLink]="['/studentInfo', student]" *ngFor="let student of studentList" class="list-group-item list-group-item-action" style="cursor: pointer;">{{student}}</a>
+  </div>
+</div>

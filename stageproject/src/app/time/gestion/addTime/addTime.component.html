@@ -1,0 +1,58 @@
+
+
+<div class="form-row justify-content-md-center">
+  <fieldset class="border p-2">
+    <legend class="w-auto">Informations sur le cours</legend>
+    <div class="form-row justify-content-md-around">
+      <label>UE: {{idUe.attr.id}}</label>
+
+    </div>
+    <div class="form-row justify-content-md-around">
+      <label>Cours: {{idCours.attr.id}}</label>
+    </div>
+  </fieldset>
+  </div>
+
+<div class="form-row justify-content-md-center">
+  <fieldset class="border p-2">
+    <legend class="w-auto">Informations sur les horaires</legend>
+    <label class="checkbox-inline"><input [(ngModel)]="recurrence" ng-true-value="true" ng-false-value="false" id="rec" type="checkbox" (change)="toggleRec()"> Recurrent ? </label>
+    <form [formGroup]="timeForm" (ngSubmit)="addTime()">
+      <div class="form-row">
+        <label for="pref" class="mr-sm-2">Préférence :</label>
+        <input type="number" min="0" max="10" class="form-control mb-2 mr-sm-2" placeholder="Préférence" id="pref" formControlName="pref">
+      </div>
+      
+      <div *ngIf="recurrence">
+      
+        <div>
+          <label for="days" class="mr-sm-2">Jours du cours:</label>
+          <div class="form-row justify-content-md-between" >
+            <label *ngFor="let day of days; let i = index" class="checkbox-inline"><input type="checkbox" [value]="i" (change)="onCheckboxChange($event, 'days')"> {{day}} </label>
+          </div>
+        </div>
+  
+        <div>
+          <label for="weeks" class="mr-sm-2">Semaines du cours:</label>
+          <div class="form-check" *ngFor="let week of weeks">
+            <label class="checkbox-inline"><input class="form-check-input" type="checkbox" [value]="week-1" (change)="onCheckboxChange($event, 'weeks')">{{week}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-row justify-content-md-around">
+        <button type="submit" class="btn btn-dark" [disabled] = "(!valid())||(!timeForm.valid && recurrence)">Ajouter créneau</button>
+      </div>
+
+    </form>
+  </fieldset>
+</div>
+
+<div class="container-fluid">
+  <div id='external-events' class='container'>
+    <p>
+      <strong>Placer le créneau</strong>
+    </p>
+    <div class='fc-event'>créneau</div>
+  </div>
+  <div id="calendar"></div>
+</div>

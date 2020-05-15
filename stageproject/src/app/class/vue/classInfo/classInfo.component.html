@@ -1,0 +1,22 @@
+<h1 class="text-center">Liste des infos de {{idClass}}</h1>
+<div class="container">
+  <div class="btn-group btn-group-toggle">
+    <label class="btn btn-secondary">
+      <input type="radio" name="options" id="option1" [ngClass]="{active: vue==='time'}" (change)="setView('time')"> Créneau
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name='options' id="option2" [ngClass]="{active: vue==='room'}" (change)="setView('room')"> Salle
+    </label>
+  </div>
+
+
+
+  
+  <div *ngIf="vue === 'time'">
+    <app-timeView [idClass]='idClass' class="text-center"></app-timeView>
+  </div>
+  <div *ngIf="vue === 'room'">
+    <app-roomClassView [idClass]='idClass' class="text-center"></app-roomClassView>
+  </div>
+
+</div>

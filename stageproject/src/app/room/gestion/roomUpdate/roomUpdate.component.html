@@ -1,0 +1,40 @@
+<div class="form-row justify-content-md-center">
+  <fieldset class="border p-2">
+    <legend class="w-auto">Informations générales</legend>
+    <div class="form-row">
+      <label> id: {{id}} </label>
+    </div>
+    <div class="form-row">
+      <label>limite d'étudiant: </label>
+      <input type="text" [(ngModel)]="limit"/>
+    </div>
+    <div class="form-row">
+      <label>features: </label>
+      <div *ngFor="let feature of feats; let i=index" class="form-check-inline">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="chosenFeatures[i]" ng-true-value="true" ng-false-value="false" ng-checked="chosenFeatures[i] == true">
+        <label class="form-check-label">{{feature}}</label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Durée en minutes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let value of values; let i = index">
+            <td>{{value[0]}}</td>
+            <td><input type="text" [(ngModel)]="values[i][1]" placeholder="durée"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="form-row justify-content-md-around">
+      <button (click)='updateRoom()' class="btn btn-dark">Mettre à jour la salle</button>
+    </div>
+  </fieldset>
+</div>

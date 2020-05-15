@@ -1,0 +1,78 @@
+<div class="form-row justify-content-md-center">
+  <fieldset class="border p-2">
+    <legend class="w-auto">Informations sur les cours</legend>
+    <div class="row">
+      <div class="col">
+
+        <div class="dropdown">
+          <button class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown" id="stdDrop">UE<span class="caret"></span></button>
+          <ul class="dropdown-menu uedrop">
+            <input [(ngModel)]="ueFilt" class="form-control" id="ueInput" (keyup)="ueFilter()" placeholder="Rechercher..." type="text">
+            <ul class="scrollable-menu list-unstyled">
+            <li (click)="setUe(ue)" style="cursor: pointer;" class="dropdown-item std" [ngClass]="{active: ueIsActive(ue)}" *ngFor="let ue of ues">
+              <a>{{ue.attr.id}}</a>
+            </li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Id</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ue of choosenUes">
+              <td>{{ue.attr.id}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </fieldset>
+  </div>
+<div class="container">
+   <div class="form-row justify-content-md-around">
+    <fieldset class="border p-2">
+      <legend class="w-auto">Informations sur les étudiant</legend>
+      <div class="row">
+      <div class="col">
+
+        <div class="dropdown">
+          <button class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown" id="stdDrop">Etudiants<span class="caret"></span></button>
+          <ul class="dropdown-menu uedrop" >
+            <input [(ngModel)]="stdFilter" class="form-control" id="stdInput" (keyup)="studentFilter()" placeholder="Rechercher..." type="text">
+            <ul class="scrollable-menu list-unstyled">
+            <li (click)="setStudent(student)" style="cursor: pointer;" class="dropdown-item std" [ngClass]="{active: stdIsActive(student)}" *ngFor="let student of students">
+              <a>{{student}}</a>
+            </li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Id</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of choosenStudents">
+              <td>{{student}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </fieldset>
+    </div>
+</div>
+
+    <div class="form-row justify-content-md-around">
+      <button type="submit" (click)="addStudentCourse()" class="btn btn-dark" [disabled] = "isValid()">Ajouter UE</button>
+    </div>

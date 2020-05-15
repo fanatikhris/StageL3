@@ -1,0 +1,10 @@
+<h1 class="text-center">Liste des UE</h1>
+<div class="container">
+  <div class="form-row justify-content-md-around" style="padding: 5px;">
+    <input [(ngModel)]="ueFiltre" class="form-control" id="ueInput" (keyup)="ueFilter()" placeholder="Rechercher..." type="text">
+    <button routerLink="ajoutUe" class="btn btn-dark">Creer une UE</button>
+  </div>
+  <div class="list-group">
+    <a [routerLink]="['/ue', ue.attr.id]" *ngFor="let ue of ueList" class="list-group-item list-group-item-action" style="cursor: pointer;">{{ue.attr.id}}</a>
+  </div>
+</div>

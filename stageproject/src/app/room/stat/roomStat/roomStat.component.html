@@ -1,0 +1,10 @@
+<div>
+  <select [(ngModel)]='id' class="selectpicker">
+    <option *ngFor="let room of rooms" [ngValue]="room.attr.id">{{room.attr.id}}</option>
+  </select>
+  <button (click)='click()' class="btn btn-dark">afficher stats</button>
+</div>
+
+<div id="containerType"></div>
+<div id="containerDays"></div>
+<div id="containerDaily"></div>

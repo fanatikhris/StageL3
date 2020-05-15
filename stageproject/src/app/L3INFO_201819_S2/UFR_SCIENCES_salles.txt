@@ -1,0 +1,105 @@
+A014 Salle syndicale et Réunion 14p
+A018 salle de cours visioconférences
+A019 Salle réunion étudiants
+A020 salle de Visio-conférences/Réunion 18p
+A115 Informatique 21
+A116
+A117
+A118
+A119
+A120
+A203 examen 1/3 tps
+A212 examen 1/3 tps
+AMPHI-A Sciences
+AMPHI-B Sciences
+AMPHI-D Sciences
+AMPHI-E Sciences
+AMPHI-L001
+AMPHI-L002
+AMPHI-L003
+AMPHI-L004
+AMPHI-L005
+AMPHI-L006
+B002
+B003
+B005
+B006
+B'107
+B'108
+B'109
+C002
+C004
+Da-003
+Da-006
+Da-101
+Da-102
+Da-106
+Da-107
+Da-201
+Da-202
+Da-207
+E001
+E002
+E003
+F001
+F002
+F003
+F004
+F101
+F102
+G001
+G002
+G003
+G101
+G102
+G103
+G104
+G105
+G204
+G205
+H001
+H002
+H003
+H006
+H007
+H113
+H217
+I002
+I003
+I004
+I005
+I006
+I008 Salle  TP ordi Math
+L101 Multimédia
+L102 Multimédia
+L103 Multimédia
+L104 Multimédia
+L105 Multimédia
+L106 Multimédia
+L107 Multimédia
+L108 Informatique 20
+L201 Multimédia
+L202 Multimédia
+L203 Multimédia
+L204 Multimédia
+L205 Multimédia et Visio-conférence
+L206 Multimédia
+L207 Multimédia
+L208 Multimédia
+L209 Multimédia
+L210 Multimédia
+L211  Informatique 20
+L212  Informatique 16
+L218 libre accés étudiant
+L219 
+L220 Multimédia
+L221 Informatique 24 Anglais
+L222
+L229 Multimédia A
+L230 Multimédia A
+L231 Multimédia A
+L232 Informatique 16
+Pas-de-salle
+Rez-de-Jardin
+Salle-de-conférences-Bât.K
+Salle-du-conseil

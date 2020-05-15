@@ -1,0 +1,88 @@
+
+    <div *ngIf="!isLoad" class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+
+
+<nav  *ngIf="isLoad" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    
+    <div  class="collapse navbar-collapse justify-content-md-between">
+        <div class="form-inline">
+        <a class="navbar-brand">Home</a>
+        <ul id='nav' class="nav navbar-nav" routerLinkActive="active">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStudent" role="button" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Etudiant
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownStudent">
+                    <a class="dropdown-item" routerLink="studentCalendar">Calendrier</a>
+                    <a class="dropdown-item" routerLink="studentStat">Statistiques</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStudent" role="button" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Professeurs
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownStudent">
+                    <a class="dropdown-item" routerLink="teacherCalendar">Calendrier</a>
+                    <a class="dropdown-item" routerLink="teacherStat">Statistiques</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStudent" role="button" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Salle
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownStudent">
+                    <a class="dropdown-item" routerLink="roomCalendar">Calendrier</a>
+                    <a class="dropdown-item" routerLink="roomStat">Statistiques</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStudent" role="button" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    UE
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownStudent">
+                    <a class="dropdown-item" routerLink="ueCalendar">Calendrier</a>
+                    <a class="dropdown-item" routerLink="ueStat">Statistiques</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStudent" role="button" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Gestion
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownStudent">
+                <a class="dropdown-item" routerLink="ue">UE</a>
+                <a class="dropdown-item" routerLink="roomView">Salles</a>
+                <a class="dropdown-item" routerLink="studentView">Etudiants</a>
+                <a class="dropdown-item" routerLink="teacherView">Professeurs</a>
+                <a class="dropdown-item" routerLink="addStudentCourse">Ajouter un UE à un étudiant</a>
+                <a class="dropdown-item" routerLink="setOpti">Régler optimization</a>
+                <a class="dropdown-item" routerLink="ajoutDistribution">Ajouter une distribution</a>
+            </div>
+            </li>
+        </ul>
+        </div>
+        <div class="my-2 my-lg-0">
+           <!-- <input type="file" id="file" (change)="handle($event.target.files)">
+            <button *ngIf="isLoad" (click)='initCsv()'>CSV</button>
+            <button *ngIf="isLoad" (click)='afficher()'>Console log</button>-->
+            <input [(ngModel)]="date" placeholder="yyyy-MM-dd"/>
+            <button (click)="initDate()" class="btn btn-dark">Valider la date de départ</button>
+        </div>
+        <div class="my-2 my-lg-0">
+            <button (click)='goBack()' class="btn btn-dark">Retour</button>
+            <button *ngIf="isLoad" class="btn btn-dark" (click)='toXml()'>Sauvegarder XML</button>
+        </div>
+    </div>
+</nav>
+<div>
+
+
+
+</div>
+<router-outlet *ngIf="isLoad"></router-outlet>

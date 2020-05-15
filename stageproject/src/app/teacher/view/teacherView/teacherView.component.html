@@ -1,0 +1,10 @@
+<h1 class="text-center">Liste des professeurs</h1>
+<div class="container">
+  <div class="form-row justify-content-md-around" style="padding: 5px;">
+    <input [(ngModel)]="teacherFiltre" class="form-control" id="teacherInput" (keyup)="teacherFilter()" placeholder="Rechercher..." type="text">
+    <button routerLink="createTeacher" class="btn btn-dark">Creer un professeur</button>
+  </div>
+  <div class="list-group">
+    <a [routerLink]="['/teacher', id]" *ngFor="let id of teacherList" class="list-group-item list-group-item-action" style="cursor: pointer;">{{id}}</a>
+  </div>
+</div>

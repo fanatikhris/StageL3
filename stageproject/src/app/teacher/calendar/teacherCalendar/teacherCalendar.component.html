@@ -1,0 +1,11 @@
+<div>
+  <select [(ngModel)]='id' class="selectpicker">
+    <option *ngFor="let teacher of teachers" [ngValue]="teacher">{{teacher}}</option>
+  </select>
+  <button (click)='click()' class="btn btn-dark">créer edt</button>
+</div>
+
+
+<div class="container-fluid">
+<div id="calendar"></div>
+</div>

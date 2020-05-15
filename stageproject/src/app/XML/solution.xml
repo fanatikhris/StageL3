@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE solution PUBLIC
+	"-//ITC 2019//DTD Problem Format/EN"
+	"http://www.itc2019.org/competition-format.dtd">
+<solution
+	name="unique-instance-name"
+	runtime="12.3" cores="4" technique="Local Search"
+	author="Pavel Novak" institution="Masaryk University" country="Czech Republic">
+	<!--
+		Each class has an assigned time and (when there are rooms) an assigned
+		room. Both must be from the domain of the class. There is also a list of
+		students enrolled in the class.
+	-->
+    <class id="Développement Web 3_CM_promo"  start="132" days="1000000" weeks="01111110000000" room="AMPHI-A">
+		<student id="Emmanuel Macron"/>
+		<student id="Olivier Veran"/>
+        <student id="Jean-Michel Blanquer"/>
+	</class>
+	<class id="Développement Web 3_TP_A"  start="96" days="0001000" weeks="01111110100000" room="I002">
+		<student id="Emmanuel Macron"/>
+	</class>
+	<class id="Développement Web 3_TP_B"  start="96" days="0001000" weeks="01111110100000" room="I003">
+		<student id="Olivier Veran"/>
+	</class>
+	<class id="Développement Web 3_TP_C" start="168" length="36" days="0000100" weeks="01111110111000" room="I004">
+        <student id="Jean-Michel Blanquer"/>
+	</class>
+		<!-- ... -->
+
+     <class id="Programmation fonctionnelle et logique_CM_promo"   start="112" days="1000000" weeks="01111110111100" room="AMPHI-B">
+	    <student id="Emmanuel Macron"/>
+		<student id="Olivier Veran"/>
+        <student id="Jean-Michel Blanquer"/>
+	</class>
+	<class id="Programmation fonctionnelle et logique_TD_A"  start="168" days="0100000" weeks="00111110111100" room="L101">
+		<student id="Emmanuel Macron"/>
+		<student id="Olivier Veran"/>
+        <student id="Jean-Michel Blanquer"/>
+	</class>
+	<class id="Programmation fonctionnelle et logique_TP_A"  start="164" days="0001000" weeks="00111010111100" room="I003">
+		<student id="Emmanuel Macron"/>
+		<student id="Olivier Veran"/>
+        <student id="Jean-Michel Blanquer"/>
+	</class>
+
+    <!-- ... -->
+
+     <class id="Bases de données 2_CM_promo"    start="168"  days="1000000" weeks="01111110110000" room="AMPHI-A">
+		<student id="Emmanuel Macron"/>
+		<student id="Olivier Veran"/>
+        <student id="Jean-Michel Blanquer"/>
+	</class>
+	<class id="Bases de données 2_TD_A"   start="168" days="0100000" weeks="11111110111000" room="L102">
+		<student id="Emmanuel Macron"/>
+		<student id="Olivier Veran"/>
+	</class>
+	<class id="Bases de données 2_TD_B"  start="188" days="0100000" weeks="01111110111000" room="L103">
+        <student id="Jean-Michel Blanquer"/>
+	</class>
+    <class id="Bases de données 2_TP_A"   start="160" days="0001000" weeks="00111010111100" room="I002">
+		<student id="Emmanuel Macron"/>
+		<student id="Olivier Veran"/>
+        <student id="Jean-Michel Blanquer"/>
+	</class>
+</solution>
