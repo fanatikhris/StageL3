@@ -4,7 +4,7 @@ import { XmlService } from '../../../xml.service';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+
 
 
 @Component({
@@ -29,7 +29,6 @@ export class AddTimeComponent implements OnInit {
     private xmlService: XmlService,
     private calendarService: CalendarService,
     private activatedRoute: ActivatedRoute,
-    private location: Location
   ) {
     this.calendarService.hasEvent.subscribe(value => this.hasEvent = value);
   }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { XmlService } from '../../../xml.service';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -13,7 +12,6 @@ export class UeInfoComponent implements OnInit {
   idUe: string;
 
   constructor(
-    private xmlService: XmlService,
     private activatedRoute: ActivatedRoute
   ) { }
 

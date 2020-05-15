@@ -15,7 +15,7 @@ export class UeManageService {
 
 constructor(private xmlService: XmlService) { }
 
-
+// reinitialise les attributs du service
 reset() {
   this.id = undefined;
   this.config = [];

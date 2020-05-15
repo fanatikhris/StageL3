@@ -10,9 +10,9 @@ import { StatService } from '../../../stat.service';
 })
 export class UeStatComponent implements OnInit {
 
-  id: any; // id de l'étudiant sélectionné
+  id: any; // id de l'ue sélectionné
 
-  ues: any[]; // liste des étudiants
+  ues: any[]; // liste des ue
 
 
   constructor(private xmlService: XmlService, private statService: StatService) { }

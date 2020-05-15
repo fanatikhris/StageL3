@@ -1,5 +1,4 @@
 import { DateService } from './../date.service';
-import { type } from 'os';
 import { XmlService } from './../xml.service';
 import { constraint } from './../data';
 import { Component, OnInit } from '@angular/core';

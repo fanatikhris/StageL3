@@ -30,7 +30,7 @@ export class UeCoursComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiService.getTeachers().subscribe(
+    this.apiService.getTeachers().subscribe( // recupere la liste des professeurs
       (res) => {
         this.teachers = res;
       },
@@ -53,10 +53,10 @@ export class UeCoursComponent implements OnInit {
   }
 
 
-  arrayMap(num: any)  {
+  /*arrayMap(num: any)  {
     return Array(num).keys();
-  }
-
+  }*/
+// ajoute les parents au cours s'il yy en a un
   setParents() {
     this.parents = [];
     const indexOfParents = this.types.indexOf(this.form.get('type').value) - 1;
@@ -70,7 +70,7 @@ export class UeCoursComponent implements OnInit {
     }
   }
 
-
+// ajoute le cours a la liste
   addCours() {
     if (
       this.cours
@@ -119,7 +119,7 @@ export class UeCoursComponent implements OnInit {
   isValid() {
     return ( this.form.get('type').value === '' || this.form.get('groupe').value === '' || this.form.get('nb').value === '' || this.form.get('teacher').value === '' );
   }
-
+// enregistre l'ue
   saveCours() {
     let allset = true;
     this.allTypesHaveCourse.forEach( elem => {

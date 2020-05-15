@@ -22,6 +22,8 @@ export class CalendarService {
   id: any;
 constructor(private xmlService: XmlService, private dateService: DateService , private apiService: ApiService) { }
 
+
+// créer un calendrier editable, ayant une fonction de drag and drop et de resizement
 createEditableCalendar(recurrence, newD) {
   this.hasEvent.next(false);
   const div: HTMLElement = document.querySelector('#calendar');
@@ -107,6 +109,7 @@ createEditableCalendar(recurrence, newD) {
   this.calendar.render();
 }
 
+// créer un calendrier avec suppression de créneau
 createClassCalendar() {
 
   const div: HTMLElement = document.querySelector('#calendar');
@@ -139,6 +142,7 @@ createClassCalendar() {
   this.calendar.render();
 }
 
+// créer un calendrier avec la possibilité de supprimer un créneau
 createTeacherCalendar() {
 
   const div: HTMLElement = document.querySelector('#calendar');
@@ -185,6 +189,7 @@ createTeacherCalendar() {
   this.calendar.render();
 }
 
+// supprime un créneau choisi par le professeur
 removeTeacherTime(course, time, end) {
   this.xmlService.deleteSolClass(course);
   this.xmlService.deleteProbClass(course);
@@ -205,6 +210,7 @@ removeTeacherTime(course, time, end) {
   this.xmlService.saveSol();
 }
 
+// créer un calendrier avec la possibilité de supprimer un crenau
 createUnavailabilityCalendar() {
 
   const div: HTMLElement = document.querySelector('#calendar');
@@ -245,6 +251,8 @@ removeTime(time) {
 removeTimeUnabailability(time) {
   this.xmlService.removeUnavaibiliyiFromRoom(this.id, time);
 }
+
+// créer un calendrier sans modiffication possible
 
 createCalendar() {
 
@@ -292,6 +300,7 @@ createCalendar() {
   this.calendar.render();
 }
 
+// retourne les evenements presents dans le calendrier
 getEvents() {
   console.log(this.calendar.getEvents()[0]._instance.range);
     return this.dateService.getTimeNotRec(
@@ -301,9 +310,11 @@ getEvents() {
     );
 }
 
+// retourne un booleen en fonction de la presence ou non d'evenement dans le calendrier
 hasEvents() {
   return this.calendar.getEvents.length === 0 ? false : true;
 }
+
 
 getEventsRec(daysval, weeksval) {
     return this.dateService.getTimeRec(

@@ -5,7 +5,7 @@ import { DateService } from './date.service';
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import * as parser from 'fast-xml-parser';
-import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 
 
@@ -528,23 +528,27 @@ getCourseTitle(course) {
   return title;
 }
 
+// retourne le nombre de jours par semaine
 getNbDays() {
   return this.datas[1].problem[0].attr.nrDays;
 }
 
+// retourne le nombre de semaines 
 getNbWeeks() {
   return this.datas[1].problem[0].attr.nrWeeks;
 }
 
+// retourne les valeurs d'optimisation
 getOpti() {
   return this.datas[1].problem[0].optimization[0];
 }
 
+// met a jour les valeurs d'optimisation
 setOpti(opti) {
   this.datas[1].problem[0].optimization[0] = opti;
 }
 
-
+// retourne la valeur length d'une class
 getClassDuration(classe) {
   console.log(classe);
   const course = this.datas[1].problem[0].courses[0]
@@ -561,7 +565,7 @@ getClassDuration(classe) {
 }
 
 
-
+// ajoute ue dans les courses
 addUe(ue) {
   if (this.datas[1].problem[0].courses[0].course.find( x => x.attr.id === ue.attr.id) === undefined) {
     this.datas[1].problem[0].courses[0].course.push(ue);
@@ -570,6 +574,7 @@ addUe(ue) {
   }
 }
 
+// fonction qui parse du json au xml
 parseJson(data) {
   const options = {
     attributeNamePrefix : '', // on ne donne pas de prefixe aux attributs
@@ -584,15 +589,15 @@ parseJson(data) {
   this.xml = Parser.parse(data);
 
 }
-
+  // ajoute le fait qu'un prof ne peut avoir deux cours en meme temps
   async addSameAttendees() {
 
   const teachers = await this.apiService.getTeachers().toPromise();
   console.log(teachers);
   const tCourses = await this.apiService.getTeacherCourse().toPromise();
   console.log(tCourses);
-  teachers.forEach(teacher => {
-    const teacherCourse = tCourses.filter( x => x.teacher === teacher);
+  teachers.forEach(teacher => { // pour chaque prof
+    const teacherCourse = tCourses.filter( x => x.teacher === teacher); // on recupere la liste de ses cours
     const sameAttendee = {
       attr: {
         type: 'SameAttendees',
@@ -601,7 +606,7 @@ parseJson(data) {
       class: []
     };
     if (teacherCourse.length > 1) { // WTF ?
-      teacherCourse.forEach(course => {
+      teacherCourse.forEach(course => { // si il a plus d'un cours on les ajoute a une contrainte sameattendees
         sameAttendee.class.push({
           attr: {
             id: course.course
@@ -609,7 +614,7 @@ parseJson(data) {
         });
       });
       if (this.datas[1].problem[0].distributions[0].distribution.find( x => x === sameAttendee) === undefined) {
-        this.addConstraint(sameAttendee);
+        this.addConstraint(sameAttendee); // on ajoute la contrainte au problem
       }
       
     }
@@ -617,9 +622,10 @@ parseJson(data) {
 
 }
 
+// sauvegarde les cours modifie dans un xml
 saveModifiedClass(course) {
-  this.parseJson(course);
-  this.apiService.saveModifiedFile({
+  this.parseJson(course); // parse en xml
+  this.apiService.saveModifiedFile({ // envoie le xml au fichier php pour sauvegarde
     xml: '<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE solution PUBLIC "-//ITC 2019//DTD Problem Format/EN" "http://www.itc2019.org/competition-format.dtd">'
     + this.xml,
     file: modifiedSol
@@ -633,9 +639,10 @@ saveModifiedClass(course) {
   );
 }
 
+// sauvegarde les modif apporté a la solution
 saveSol() {
-  this.parseJson(this.datas[0]);
-  this.apiService.saveFile({
+  this.parseJson(this.datas[0]); // parse au format xml
+  this.apiService.saveFile({ // envoie le xml au fichier php pour sauvegarde
     xml: '<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE solution PUBLIC "-//ITC 2019//DTD Problem Format/EN" "http://www.itc2019.org/competition-format.dtd">'
     + this.xml,
     file: sol
@@ -648,12 +655,12 @@ saveSol() {
     }
   );
 }
-
+// sauvegarde du xml
 async saveXml() {
-  await this.addSameAttendees();
-  this.parseJson(this.datas[1]);
+  // await this.addSameAttendees();
+  this.parseJson(this.datas[1]); // parse l'objet json en xml
 
-  this.apiService.saveFile({
+  this.apiService.saveFile({ // envoie le xml au fichier php pour sauvegarde
     xml: '<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE solution PUBLIC "-//ITC 2019//DTD Problem Format/EN" "http://www.itc2019.org/competition-format.dtd">'
     + this.xml,
     file: prob

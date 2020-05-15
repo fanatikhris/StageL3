@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, FormArray, Validators, FormControl } from '@ang
 import { XmlService } from '../../../xml.service';
 import { CalendarService } from '../../../calendar.service';
 import { ActivatedRoute } from '@angular/router';
-import { promise } from 'protractor';
+
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -14,11 +14,11 @@ import { promise } from 'protractor';
 })
 export class AddRoomUnavailabilityComponent implements OnInit {
 
-  idRoom;
+  idRoom: string;
   timeForm: FormGroup;
   recurrence = false;
   days = days;
-  weeks;
+  weeks: number[];
   hasEvent: boolean;
   constructor(
     private formBuilder: FormBuilder,
@@ -50,11 +50,11 @@ export class AddRoomUnavailabilityComponent implements OnInit {
     this.setCalendar(false);
   }
 
-  setCalendar(newD) {
+  setCalendar(newD: boolean) {
     this.calendarService.createEditableCalendar(this.recurrence, newD);
   }
 
-  delay(ms) {
+  delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms));
   }
 
@@ -67,7 +67,7 @@ export class AddRoomUnavailabilityComponent implements OnInit {
     this.setCalendar(false);
   }
 
-  onCheckboxChange(e, val) {
+  onCheckboxChange(e: { target: { checked: any; value: any; }; }, val: string) {
     const checkArray: FormArray = this.timeForm.get(val) as FormArray;
     if (e.target.checked) {
       checkArray.push(new FormControl(e.target.value));
@@ -86,7 +86,7 @@ export class AddRoomUnavailabilityComponent implements OnInit {
   }
 
   addTravelTime() {
-    let events;
+    let events: { attr: { start: string; length: string; days: string; weeks: string; } | { start: string; length: string; days: string; weeks: string; }; };
     if (this.recurrence) {
       events = this.calendarService.getEventsRec(
         this.timeForm.get('days').value,

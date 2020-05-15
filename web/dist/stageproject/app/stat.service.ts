@@ -21,7 +21,7 @@ noData(Highcharts);
 export class StatService {
 
 
-
+ // options pour l'api highcharts
   dailyOptions: any = {
     chart: {
       plotBackgroundColor: null,
@@ -170,21 +170,25 @@ export class StatService {
 
 constructor(private apiService: ApiService, private xmlService: XmlService, private dateService: DateService) {}
 
+// recupere les cours suivis par id
 setStudentStat(id) {
   const classes = this.xmlService.getStudentClasses(id);
   this.setCourseStat(classes);
 }
 
+// recupere les cours se déroulant dans la salle id
 setRoomStat(id) {
   const classes = this.xmlService.getRoomClasses(id);
   this.setCourseStat(classes);
 }
 
+// recupere les cours d'une UE
 setUeStat(id) {
   const classes = this.xmlService.getUeSolClasses(id);
   this.setCourseStat(classes);
 }
 
+// reupere les cours données par un professeur
 setTeacherStat(id) {
   this.apiService.getTeacherCourseById({id: id}).subscribe(
     (res) => {
@@ -198,6 +202,8 @@ setTeacherStat(id) {
   
 }
 
+
+// initialise les parametres des graphes avec les cours passés en parametre
 setCourseStat(courses) {
   // console.log(courses);
   this.total = 0;
@@ -208,7 +214,7 @@ setCourseStat(courses) {
     this.jours.push(0);
   }
 
-  courses.forEach(course => {
+  courses.forEach(course => { // pour chaque cours 
     let weeks = course.attr.weeks;
     for (let week = this.xmlService.getNbWeeks() - 1; week >= 0; week--) {
       if (weeks % 2 === 1) {
@@ -216,11 +222,11 @@ setCourseStat(courses) {
         const nbDays = this.xmlService.getNbDays() - 1;
         for (let day = nbDays; day >= 0; day--) {
 
-          if (days % 2 === 1) {
+          if (days % 2 === 1) { // on recupere le jour ou il a lieur
             this.jours[day] += 1;
             this.total += 1;
 
-            const couleur = this.xmlService.getClassColor(course.attr.id);
+            const couleur = this.xmlService.getClassColor(course.attr.id); // on recupere le type de cours
             if (couleur === '#2dfc03') {
               this.type[2] += 1;
             } else if (couleur === '#fc8003') {
@@ -229,7 +235,7 @@ setCourseStat(courses) {
               this.type[0] += 1;
             }
 
-            if ( this.dateService.isMorning(course.attr.start - 1)) {
+            if ( this.dateService.isMorning(course.attr.start - 1)) { // on recupere le moment de la journée ou il a lieu
               this.journee[0] += 1;
             } else if ( this.dateService.isMorning(course.attr.start - 1) === false ) {
               this.journee[1] += 1;
@@ -247,6 +253,7 @@ setCourseStat(courses) {
 
 }
 
+// on créé les graphes
 createStat() {
   // tslint:disable-next-line: prefer-for-of
   for ( let i = 0; i < this.jours.length; i++) {
