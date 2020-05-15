@@ -8,7 +8,7 @@
 ## lancer sur un serveur lampp
  1. importer edt.sql dans phpmyadmin 
  2. copier web dans htdocs 
- 3. Les fichiers xml sont a placé dans dist/stageproject/src/XML :
+ 3. Les fichiers xml sont a placé dans dist/stageproject/src/app/XML :
   - problem: problem.xml
   - solution: solution.xml
  
