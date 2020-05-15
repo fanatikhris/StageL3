@@ -10,7 +10,7 @@ export class DateService {
 
 dateSet: Subject<boolean> = new Subject<boolean>();
 
-dateDebut = new Date(2020, 4, 27, 0, 0, 0);
+dateDebut;
 timeCoeff: number;
 
 constructor() { this.dateSet.next(false); }
