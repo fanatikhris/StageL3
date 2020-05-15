@@ -4,11 +4,11 @@ export const features: string[] = ['prises', 'labo', 'PC'];
 
 export const types: string[] = ['CM-Amorcage', 'CM', 'CM/TD', 'TD', 'TP', 'CC', 'CT', 'Projet'];
 
-export const sol = 'XML/solution.xml';
+export const sol = 'app/XML/solution.xml';
 
 export const modifiedSol = 'app/XML/modifiedsolution.xml';
 
-export const prob = 'XML/problem.xml';
+export const prob = 'app/XML/problem.xml';
 
 export const nameVal = 'test';
 

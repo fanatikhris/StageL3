@@ -2,6 +2,7 @@ import { ApiService } from '../../../api.service';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { UeManageService } from '../../../ueManage.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -26,7 +27,8 @@ export class UeCoursComponent implements OnInit {
   constructor(
     private ueManageService: UeManageService,
     private formBuilder: FormBuilder,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -138,12 +140,14 @@ export class UeCoursComponent implements OnInit {
         (err) => {
           console.log(err);
         }
+
       );
       this.tCourses = [];
       this.cours = [];
       this.allTypesHaveCourse = [];
       this.types = [];
       this.ueManageService.reset();
+      this.router.navigate(['/ue']);
     }
   }
 
